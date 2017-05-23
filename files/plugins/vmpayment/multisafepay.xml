@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="2.5" type="plugin" group="vmpayment" method="upgrade">
+
+  <name>VM - Payment, Multisafepay</name>
+  <creationDate>Jan 2014</creationDate>
+  <author>MultiSafepay</author>
+  <authorUrl>http://www.multisafepay.com</authorUrl>
+  <copyright>Copyright (C) 2012 Multisafepay.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+  <version>2.2.0</version>
+  <description><![CDATA[<a href="http://www.multisafepay.com" target="_blank">Multisafepay</a> payment plugin for Virtuemart 2]]>
+  </description>
+
+  <files>
+    <filename plugin="multisafepay">multisafepay.php</filename>
+    <filename plugin="multisafepay">multisafepay.xml</filename>
+  </files>
+	
+  <!--VM2 -->
+  <params addpath="/administrator/components/com_virtuemart/elements" >
+    <param type="vmjpluginwarning" />
+    <param type="spacer" default="VMPAYMENT_MULTISAFEPAY_ACCOUNT_SETTINGS" level="level1" />
+    <param name="sandbox" type="radio" default="0" label="VMPAYMENT_MULTISAFEPAY_SANDBOX" description="VMPAYMENT_MULTISAFEPAY_SANDBOX_DESC">
+      <option value="0">Live</option>
+      <option value="1">Test</option>
+    </param>
+    <param type="text" name="multisafepay_account_id"  	size="40" label="VMPAYMENT_MULTISAFEPAY_ACCOUNT_ID" default="" description="VMPAYMENT_MULTISAFEPAY_ACCOUNT_ID_DESC" />
+    <param type="text" name="multisafepay_site_id"  	size="40" label="VMPAYMENT_MULTISAFEPAY_SITE_ID" default="" description="VMPAYMENT_MULTISAFEPAY_SITE_ID_DESC" />
+    <param type="text" name="multisafepay_secure_code"  size="40" label="VMPAYMENT_MULTISAFEPAY_SECURE_CODE" default="" description="VMPAYMENT_MULTISAFEPAY_SECURE_CODE_DESC" />
+    <param type="text" name="multisafepay_gateway"  	size="40" label="VMPAYMENT_MULTISAFEPAY_GATEWAY" default="" description="VMPAYMENT_MULTISAFEPAY_GATEWAY_DESC" />
+    <param type="text" name="multisafepay_days_active"  	size="40" label="VMPAYMENT_MULTISAFEPAY_DAYS_ACTIVE" default="" description="VMPAYMENT_MULTISAFEPAY_DAYS_ACTIVE_DESC" />
+    <param name="url_postback"  type="multisafepayurl" scope="com_virtuemart" default="" label="VMPAYMENT_MULTISAFEPAY_URL_POSTBACK" description="VMPAYMENT_MULTISAFEPAY_URL_POSTBACK_DESC" />
+    <param name="url_feed"  type="multisafepayfeedurl" scope="com_virtuemart" default="" label="VMPAYMENT_MULTISAFEPAY_URL_FEED" description="VMPAYMENT_MULTISAFEPAY_URL_FEED_DESC" />
+    <param	name="payment_logos" type="vmfiles" label="VMPAYMENT_MULTISAFEPAY_LOGOS" description="VMPAYMENT_MULTISAFEPAY_LOGOS_DESC" directory="/images/stories/virtuemart/payment" default="default" hide_default="1" hide_none="1" stripext="0"  exclude="^_" />
+    <param type="spacer" default="" level="level1" />
+    <param type="spacer" default="VMPAYMENT_MULTISAFEPAY_STATUSCODES_PARAMS" level="level1" />
+    <param name="status_initialized"    type="vmorderstate" scope="com_virtuemart" default="P" label="VMPAYMENT_MULTISAFEPAY_STATUS_INITIALIZED" 	description="VMPAYMENT_MULTISAFEPAY_STATUS_INITIALIZED_DESC" />
+    <param name="status_completed"    	type="vmorderstate" scope="com_virtuemart" default="C" label="VMPAYMENT_MULTISAFEPAY_STATUS_COMPLETED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_COMPLETED_DESC" />
+    <param name="status_uncleared"   	type="vmorderstate" scope="com_virtuemart" default="P" label="VMPAYMENT_MULTISAFEPAY_STATUS_UNCLEARED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_UNCLEARED_DESC" />
+    <param name="status_void"     		type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_MULTISAFEPAY_STATUS_VOID" 			description="VMPAYMENT_MULTISAFEPAY_STATUS_VOID_DESC" />
+    <param name="status_declined" 		type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_MULTISAFEPAY_STATUS_DECLINED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_DECLINED_DESC" />
+    <param name="status_refunded" 		type="vmorderstate" scope="com_virtuemart" default="R" label="VMPAYMENT_MULTISAFEPAY_STATUS_REFUNDED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_REFUNDED_DESC" />
+    <param name="status_partial_refunded" 		type="vmorderstate" scope="com_virtuemart" default="R" label="VMPAYMENT_MULTISAFEPAY_STATUS_PARTIAL_REFUNDED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_PARTIAL_REFUNDED_DESC" />
+    <param name="status_expired" 		type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_MULTISAFEPAY_STATUS_EXPIRED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_EXPIRED_DESC" />
+    <param name="status_canceled" 		type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_MULTISAFEPAY_STATUS_CANCELED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_CANCELED_DESC" />
+    <param name="status_shipped" 		type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_MULTISAFEPAY_STATUS_SHIPPED" 		description="VMPAYMENT_MULTISAFEPAY_STATUS_SHIPPED_DESC" />
+    <param type="spacer" default="" level="level1" />
+    <param type="spacer" default="VMPAYMENT_MULTISAFEPAY_VIRTUEMART_PARAMS" level="level1" />
+    <param name="payment_currency" 		type="vmacceptedcurrency" default="" label="VMPAYMENT_MULTISAFEPAY_CURRENCY" description="VMPAYMENT_MULTISAFEPAY_CURRENCY_DESC" />
+    <param name="countries" 			type="vmcountries"  scope="com_virtuemart" default="" label="VMPAYMENT_MULTISAFEPAY_COUNTRIES" description="VMPAYMENT_MULTISAFEPAY_COUNTRIES_DESC"/>
+    <param name="min_amount" 			type="text"  label="VMPAYMENT_MULTISAFEPAY_MIN_AMOUNT" description="VMPAYMENT_MULTISAFEPAY_MIN_AMOUNT_EXPLAIN" />
+    <param name="max_amount" 			type="text"  label="VMPAYMENT_MULTISAFEPAY_MAX_AMOUNT" description="VMPAYMENT_MULTISAFEPAY_MAX_AMOUNT_EXPLAIN" />
+    <param name="cost_per_transaction" 	type="text"  label="VMPAYMENT_MULTISAFEPAY_COST_PER_TRANSACTION" description="VMPAYMENT_MULTISAFEPAY_COST_PER_TRANSACTION_EXPLAIN" />
+    <param name="cost_percent_total" 	type="text"  label="VMPAYMENT_MULTISAFEPAY_COST_PERCENT_TOTAL" description="VMPAYMENT_MULTISAFEPAY_COST_PERCENT_TOTAL_EXPLAIN" />
+    <param name="tax_id" 				type="vmtaxes" scope="com_virtuemart"  label="VMPAYMENT_MULTISAFEPAY_TAX" description="VMPAYMENT_MULTISAFEPAY_TAX_EXPLAIN" />
+    <param type="spacer" default="" level="level1" />
+    <param type="spacer" default="VMPAYMENT_MULTISAFEPAY_SPECIFIC_SETTINGS" level="level1" />
+    <param name="multisafepay_ip_validation" type="radio" default="0" label="VMPAYMENT_MULTISAFEPAY_IP_VALIDATION" description="VMPAYMENT_MULTISAFEPAY_IP_VALIDATION_DESC">
+      <option value="0">Disabled</option>
+      <option value="1">Enabled</option>
+    </param>
+    <param type="text" name="multisafepay_ip_address" size="40" label="VMPAYMENT_MULTISAFEPAY_IP_ADDRESS" default="" description="VMPAYMENT_MULTISAFEPAY_IP_ADDRESS_DESC" />
+  </params>
+    
+    
+  <vmconfig>
+    <fields name="params">
+      <fieldset name="account">
+        <field type="vmtitle" default="VMPAYMENT_MULTISAFEPAY_ACCOUNT_SETTINGS" description=""/>
+        <field name="multisafepay_account_id" type="text" label="VMPAYMENT_MULTISAFEPAY_ACCOUNT_ID"
+               description="VMPAYMENT_MULTISAFEPAY_ACCOUNT_ID_DESC"/>
+        <field name="multisafepay_site_id" type="text" label="VMPAYMENT_MULTISAFEPAY_SITE_ID"
+               description="VMPAYMENT_MULTISAFEPAY_SITE_ID_DESC"/>
+        <field name="multisafepay_secure_code" type="text" label="VMPAYMENT_MULTISAFEPAY_SECURE_CODE"
+               description="VMPAYMENT_MULTISAFEPAY_SECURE_CODE_DESC"/>
+                
+        <field name="sandbox" type="radio" default="0"
+               label="VMPAYMENT_MULTISAFEPAY_SANDBOX"
+               description="VMPAYMENT_MULTISAFEPAY_SANDBOX_DESC">
+          <option value="0">Live</option>
+          <option value="1">Test</option>
+        </field>
+      </fieldset>
+      <fieldset name="payment"  addfieldpath="/administrator/components/com_virtuemart/fields">
+        <field type="vmtitle" default="VMPAYMENT_MULTISAFEPAY_STATUSCODES_PARAMS" description=""/>
+        <field name="multisafepay_gateway" type="text" label="VMPAYMENT_MULTISAFEPAY_GATEWAY"
+               description="VMPAYMENT_MULTISAFEPAY_GATEWAY_DESC"/>
+        <field name="payment_currency" type="vmacceptedcurrency" default="" label="VMPAYMENT_MULTISAFEPAY_CURRENCY"
+               description="VMPAYMENT_MULTISAFEPAY_CURRENCY_TIP"/>
+        <field name="status_initialized" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_INITIALIZED" description="VMPAYMENT_MULTISAFEPAY_STATUS_INITIALIZED_DESC"/>
+        <field name="status_completed" type="vmorderstate" scope="com_virtuemart" default="C"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_COMPLETED" description="VMPAYMENT_MULTISAFEPAY_STATUS_COMPLETED_DESC"/>
+        <field name="status_canceled" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_CANCELED" description="VMPAYMENT_MULTISAFEPAY_STATUS_CANCELED_DESC"/>
+        <field name="status_expired" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_EXPIRED" description="VMPAYMENT_MULTISAFEPAY_STATUS_EXPIRED_DESC"/>
+        <field name="status_void" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_VOID" description="VMPAYMENT_MULTISAFEPAY_STATUS_VOID_DESC"/>
+        <field name="status_declined" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_DECLINED" description="VMPAYMENT_MULTISAFEPAY_STATUS_DECLINED_DESC"/>
+        <field name="status_refunded" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_REFUNDED" description="VMPAYMENT_MULTISAFEPAY_STATUS_REFUNDED_DESC"/>
+        <field name="status_partial_refunded" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_PARTIAL_REFUNDED" description="VMPAYMENT_MULTISAFEPAY_STATUS_PARTIAL_REFUNDED_DESC"/>
+        <field name="status_uncleared" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_UNCLEARED" description="VMPAYMENT_MULTISAFEPAY_STATUS_UNCLEARED_DESC"/>
+        <field name="status_shipped" type="vmorderstate" scope="com_virtuemart" default="U"
+               label="VMPAYMENT_MULTISAFEPAY_STATUS_SHIPPED" description="VMPAYMENT_MULTISAFEPAY_STATUS_SHIPPED_DESC"/>
+               
+      </fieldset>
+      <fieldset name="template">
+        <field type="vmtitle" default="VMPAYMENT_MULTISAFEPAY_VIRTUEMART_PARAMS" description=""/>
+        <field name="payment_logos" type="vmfiles" directory="/images/stories/virtuemart/payment"
+               hide_none="1" label="VMPAYMENT_MULTISAFEPAY_LOGOS"
+               size="40"
+               description="VMPAYMENT_MULTISAFEPAY_LOGOS_DESC"/>
+        <field name="multisafepay_days_active" type="text" label="VMPAYMENT_MULTISAFEPAY_DAYS_ACTIVE"
+               description="VMPAYMENT_MULTISAFEPAY_DAYS_ACTIVE_DESC"/>
+      </fieldset>
+      <fieldset name="restrictions" >
+        <field type="vmtitle" default="VMPAYMENT_MULTISAFEPAY_RESTRICTION_SETTINGS" description=""/>
+        <field name="countries" multiple="true" type="vmcountries" scope="com_virtuemart" default=""
+               label="VMPAYMENT_MULTISAFEPAY_COUNTRIES" description="VMPAYMENT_MULTISAFEPAY_COUNTRIES_DESC"/>
+        <field name="min_amount" type="text" label="VMPAYMENT_MULTISAFEPAY_MIN_AMOUNT"
+               description="VMPAYMENT_MULTISAFEPAY_MIN_AMOUNT_EXPLAIN"/>
+        <field name="max_amount" type="text" label="VMPAYMENT_MULTISAFEPAY_MAX_AMOUNT"
+               description="VMPAYMENT_MULTISAFEPAY_MAX_AMOUNT_EXPLAIN"/>
+      </fieldset>
+      <fieldset name="fee">
+        <field type="vmtitle" default="VMPAYMENT_MULTISAFEPAY_FEE_SETTINGS" description=""/>
+        <field name="cost_per_transaction" type="text" label="VMPAYMENT_MULTISAFEPAY_COST_PER_TRANSACTION"
+               description="VMPAYMENT_MULTISAFEPAY_COST_PER_TRANSACTION_EXPLAIN"/>
+        <field name="cost_percent_total" type="text" label="VMPAYMENT_MULTISAFEPAY_COST_PERCENT_TOTAL"
+               description="VMPAYMENT_MULTISAFEPAY_COST_PERCENT_TOTAL_EXPLAIN"/>
+        <field name="tax_id" type="vmtaxes" scope="com_virtuemart" label="VMPAYMENT_MULTISAFEPAY_TAX"
+               description="VMPAYMENT_MULTISAFEPAY_TAX_EXPLAIN"/>
+      </fieldset>
+      <!--<fieldset name="fastcheckout">
+          <field type="vmtitle" default="VMPAYMENT_MULTISAFEPAY_FCO_SETTINGS" description="VMPAYMENT_MULTISAFEPAY_FCO_SETTINGS_DESC"/>
+          <field name="enable_fastcheckout" type="radio" default="0"
+                 label="VMPAYMENT_MULTISAFEPAY_FASTCHECKOUT"
+                 description="VMPAYMENT_MULTISAFEPAY_FASTCHECKOUT_DESC">
+              <option value="0">Off</option>
+              <option value="1">On</option>
+          </field>
+      </fieldset>-->
+      <fieldset name="debug">
+        <field type="vmtitle" default="VMPAYMENT_MULTISAFEPAY_DEBUG_SETTINGS" description=""/>
+        <field name="multisafepay_ip_validation" type="radio" default="0"
+               label="VMPAYMENT_MULTISAFEPAY_IP_VALIDATION"
+               description="VMPAYMENT_MULTISAFEPAY_IP_VALIDATION_DESC">
+          <option value="0">Disabled</option>
+          <option value="1">Enabled</option>
+        </field>
+        <field name="multisafepay_ip_address" type="text" label="VMPAYMENT_MULTISAFEPAY_IP_ADDRESS"
+               description="VMPAYMENT_MULTISAFEPAY_IP_ADDRESS_DESC"/>
+      </fieldset>
+    </fields>
+  </vmconfig>
+
+</extension>

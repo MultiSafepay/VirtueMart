@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="2.5" type="component" group="" method="upgrade" >
+  <name>multisafepay</name>
+  <creationDate>OCT 2012</creationDate>
+  <author>Ruud Jonk</author>
+  <authorUrl>http://www.multisafepay.com</authorUrl>
+  <copyright>Copyright (C) 2012 MULTISAFEPAY.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+  <version>0.0.1</version>
+  <description><![CDATA[<a href="http://www.multisafepay.com" target="_blank">Multisafepay</a> payment plugin for Virtuemart 2 + 3]]>
+  </description>
+
+  <scriptfile>script.install.php</scriptfile>
+  <!-- Custom installer for 1.5 -->
+  <installfile>script.install.php</installfile>
+  <!-- Custom uninstaller for 1.5 -->
+  <uninstallfile>script.install.php</uninstallfile>
+
+
+  <administration>
+    <menu>Multisafepay</menu>
+    <files>
+      <folder>files</folder>
+    </files>
+    <languages folder="files/administrator/language">
+      <language tag="en-GB">en-GB/en-GB.plg_vmpayment_multisafepay.ini</language>
+      <language tag="nl-NL">nl-NL/nl-NL.plg_vmpayment_multisafepay.ini</language>
+      <language tag="de-DE">de-DE/de-DE.plg_vmpayment_multisafepay.ini</language>
+    </languages>
+  </administration>
+	
+
+</extension>
