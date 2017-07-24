@@ -190,7 +190,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
 
         $issuer = $this->_getSelectedBank($order['details']['BT']->virtuemart_paymentmethod_id);
 
-        if ($method->multisafepay_gateway == 'PAYAFTER' || $method->multisafepay_gateway == 'KLARNA') {
+        if ($method->multisafepay_gateway == 'PAYAFTER' || $method->multisafepay_gateway == 'KLARNA' || $method->multisafepay_gateway == 'EINVOICE') {
             $tax_array = array();
 
             $shipping_tax = $order['details']['BT']->order_shipment_tax;
