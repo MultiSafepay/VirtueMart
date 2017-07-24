@@ -239,7 +239,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
 
             foreach ($order['items'] as $item) {
                 $product_tax = $item->product_tax;
-                $product_tax_percentage = round($product_tax / $item->product_discountedPriceWithoutTax, 2);
+                $product_tax_percentage = round($product_tax / $item->product_PriceWithoutTax, 2);
 
                 if ($product_tax_percentage == 0) {
                     $product_tax_percentage = '0.00';
@@ -249,7 +249,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
                     $tax_array[] = $product_tax_percentage;
                 }
 
-                $product_price = $item->product_discountedPriceWithoutTax;
+                $product_price = $item->product_PriceWithoutTax;
                 $product_name = $item->order_item_name;
                 $c_item = new MspItem($product_name . " " . 'EUR', '', $item->product_quantity, $product_price, '', '');
                 $msp->cart->AddItem($c_item);
