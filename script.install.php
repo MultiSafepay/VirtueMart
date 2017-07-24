@@ -162,6 +162,7 @@ if (!defined('_VM_SCRIPT_INCLUDED')) {
             $paymentMethods[] = array('name' => 'MultiSafepay MisterCash', 'code' => 'MISTERCASH');
             $paymentMethods[] = array('name' => 'MultiSafepay Giropay', 'code' => 'GIROPAY');
             $paymentMethods[] = array('name' => 'MultiSafepay Sofort', 'code' => 'DIRECTEBANK');
+			$paymentMethods[] = array('name' => 'MultiSafepay Paysafecard', 'code' => 'PSAFECARD');
             $paymentMethods[] = array('name' => 'MultiSafepay Direct Debit', 'code' => 'DIRDEB');
             $paymentMethods[] = array('name' => 'MultiSafepay Betaal na Ontvangst', 'code' => 'PAYAFTER');
             $paymentMethods[] = array('name' => 'MultiSafepay FastCheckout', 'code' => 'FCO');
