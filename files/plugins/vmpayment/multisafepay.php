@@ -212,7 +212,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
             $shipping_name = 'Shipping/Verzending';
             $c_item = new MspItem($shipping_name . " " . 'EUR', '', 1, $shipping_price, '', '');
             $msp->cart->AddItem($c_item);
-            $c_item->SetMerchantItemId('shipping');
+            $c_item->SetMerchantItemId('msp-shipping');
             $c_item->SetTaxTableSelector($shipping_tax_percentage);
 
             $payment_tax = $order['details']['BT']->order_payment_tax;
