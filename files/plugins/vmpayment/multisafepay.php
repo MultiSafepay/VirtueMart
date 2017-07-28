@@ -32,7 +32,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
 
     public static $_this = false;
     private $_multisafepay;
-    public $_version = "2.2.0";
+    public $_version = "2.2.1";
 
     function __construct(& $subject, $config)
     {
@@ -181,16 +181,16 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
         }
         $msp->transaction['daysactive'] = $method->multisafepay_days_active;
         $msp->plugin_name = 'Virtuemart ' . VM_VERSION;
-        $msp->version = '2.2.0';
+        $msp->version = '2.2.1';
         $msp->plugin['shop'] = 'Virtuemart';
         $msp->plugin['shop_version'] = VM_VERSION;
-        $msp->plugin['plugin_version'] = '2.2.0';
+        $msp->plugin['plugin_version'] = '2.2.1';
         $msp->plugin['partner'] = '';
         $msp->plugin['shop_root_url'] = JURI::root();
 
         $issuer = $this->_getSelectedBank($order['details']['BT']->virtuemart_paymentmethod_id);
 
-        if ($method->multisafepay_gateway == 'PAYAFTER') {
+        if ($method->multisafepay_gateway == 'PAYAFTER' || $method->multisafepay_gateway == 'KLARNA' || $method->multisafepay_gateway == 'EINVOICE') {
             $tax_array = array();
 
             $shipping_tax = $order['details']['BT']->order_shipment_tax;
@@ -212,7 +212,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
             $shipping_name = 'Shipping/Verzending';
             $c_item = new MspItem($shipping_name . " " . 'EUR', '', 1, $shipping_price, '', '');
             $msp->cart->AddItem($c_item);
-            $c_item->SetMerchantItemId('shipping');
+            $c_item->SetMerchantItemId('msp-shipping');
             $c_item->SetTaxTableSelector($shipping_tax_percentage);
 
             $payment_tax = $order['details']['BT']->order_payment_tax;
@@ -239,7 +239,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
 
             foreach ($order['items'] as $item) {
                 $product_tax = $item->product_tax;
-                $product_tax_percentage = round($product_tax / $item->product_discountedPriceWithoutTax, 2);
+                $product_tax_percentage = round($product_tax / $item->product_priceWithoutTax, 2);
 
                 if ($product_tax_percentage == 0) {
                     $product_tax_percentage = '0.00';
@@ -249,7 +249,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
                     $tax_array[] = $product_tax_percentage;
                 }
 
-                $product_price = $item->product_discountedPriceWithoutTax;
+                $product_price = $item->product_priceWithoutTax;
                 $product_name = $item->order_item_name;
                 $c_item = new MspItem($product_name . " " . 'EUR', '', $item->product_quantity, $product_price, '', '');
                 $msp->cart->AddItem($c_item);
