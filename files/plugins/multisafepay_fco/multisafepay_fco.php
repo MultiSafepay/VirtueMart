@@ -84,12 +84,13 @@ class plgVmPaymentMultisafepay_Fco extends vmPSPlugin
     }
 
     /**
-     * @param VirtuemartViewUser $user
-     * @param                    $html
-     * @param bool               $from_cart
+     * @param VmView $user
+     * @param        $html
+     * @param bool   $from_cart
+     *
      * @return bool|null
      */
-    function plgVmDisplayLogin(VirtuemartViewUser $user, &$html, $from_cart = FALSE)
+    function plgVmDisplayLogin(VmView $user, &$html, $from_cart = FALSE)
     {
         // only to display it in the cart, not in list orders view
         if (!$from_cart) {
