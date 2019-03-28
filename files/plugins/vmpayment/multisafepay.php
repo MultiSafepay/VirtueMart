@@ -32,7 +32,7 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
 
     public static $_this = false;
     private $_multisafepay;
-    public $_version = "2.2.1";
+    public $_version = "2.2.2-rc1";
 
     function __construct(& $subject, $config)
     {
@@ -181,10 +181,10 @@ class plgVMPaymentMultisafepay extends vmPSPlugin
         }
         $msp->transaction['daysactive'] = $method->multisafepay_days_active;
         $msp->plugin_name = 'Virtuemart ' . VM_VERSION;
-        $msp->version = '2.2.1';
+        $msp->version = '2.2.2-rc1';
         $msp->plugin['shop'] = 'Virtuemart';
         $msp->plugin['shop_version'] = VM_VERSION;
-        $msp->plugin['plugin_version'] = '2.2.1';
+        $msp->plugin['plugin_version'] = '2.2.2-rc1';
         $msp->plugin['partner'] = '';
         $msp->plugin['shop_root_url'] = JURI::root();
 
