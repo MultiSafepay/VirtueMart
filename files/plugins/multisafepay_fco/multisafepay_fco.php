@@ -39,7 +39,7 @@ class plgVmPaymentMultisafepay_Fco extends vmPSPlugin
     private $shipper;
     public static $_this = false;
     private $_multisafepay_fco;
-    public $_version = "2.2.1";
+    public $_version = "2.2.2";
 
     //public $_currentMethod;
 
@@ -84,12 +84,13 @@ class plgVmPaymentMultisafepay_Fco extends vmPSPlugin
     }
 
     /**
-     * @param VirtuemartViewUser $user
-     * @param                    $html
-     * @param bool               $from_cart
+     * @param VmView $user
+     * @param        $html
+     * @param bool   $from_cart
+     *
      * @return bool|null
      */
-    function plgVmDisplayLogin(VirtuemartViewUser $user, &$html, $from_cart = FALSE)
+    function plgVmDisplayLogin(VmView $user, &$html, $from_cart = FALSE)
     {
         // only to display it in the cart, not in list orders view
         if (!$from_cart) {
@@ -923,7 +924,7 @@ class plgVmPaymentMultisafepay_Fco extends vmPSPlugin
         $msp->transaction['description'] = 'Order #' . $msp->transaction['id'];
         $msp->plugin['shop'] = 'Virtuemart FCO';
         $msp->plugin['shop_version'] = '2';
-        $msp->plugin['plugin_version'] = '2.2.1';
+        $msp->plugin['plugin_version'] = '2.2.2';
         $msp->plugin['partner'] = '';
         $msp->plugin['shop_root_url'] = JURI::root();
         $msp->plugin_name = $msp->plugin['shop'];
