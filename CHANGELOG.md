@@ -1,5 +1,5 @@
 ## 2.2.2
-Release date: March 28, 2019
+Release date: April 25, 2019
 ### Fixed
 + PLGVIRS-44: Prevent creation of index.html in administrator folder
 + PLGVIRS-47: 500 error after installing MultiSafepay plugin
