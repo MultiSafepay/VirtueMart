@@ -26,4 +26,4 @@ The supported Payment Methods & Gift cards for this plugin can be found over her
 For additional information or instructions please see our [installation & configuration manual](https://docs.multisafepay.com/plugins/virtuemart/manual/)
  
 ## Support
-You can create issues on our repository. If you need any additional help or support, please contact <a href="mailto:techsupport@multisafepay.com">techsupport@multisafepay.com</a>
+You can create issues on our repository. If you need any additional help or support, please contact <a href="mailto:integration@multisafepay.com">integration@multisafepay.com</a>
